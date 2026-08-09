@@ -1,5 +1,5 @@
 ---
-name: elliott-wave-analysis
+name: elliott-wave-biga
 description: 按 Elliott Wave（艾略特波浪理论）分析市场或图表：声明分析级别、数浪、按 Rule 与 Guideline 校验、给出主备方案与独立失效价位、概率排序、输出报告与交易计划。A 股行情可用 a-stock-data 获取，其他市场需用户提供数据或图表。
 ---
 

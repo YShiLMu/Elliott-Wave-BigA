@@ -7,7 +7,7 @@
 方式一：通过 Codex 技能安装器安装本仓库：
 
 ```
-https://github.com/YShiLMu/波浪理论在大A
+https://github.com/YShiLMu/elliott-wave-a-shares
 ```
 
 方式二：手动安装

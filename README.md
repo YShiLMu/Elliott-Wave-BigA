@@ -1,4 +1,4 @@
-# 波浪理论在大A（Elliott Wave Analysis）
+# Elliott-Wave-BigA（波浪理论在大A）
 
 一个用于分析 A 股市场的 Codex Skill：声明分析级别、数浪、按 Rule 与 Guideline 校验、给出主备方案与独立失效价位、概率排序，并输出分析报告与交易计划。
 
@@ -7,7 +7,7 @@
 方式一：通过 Codex 技能安装器安装本仓库：
 
 ```
-https://github.com/YShiLMu/elliott-wave-a-shares
+https://github.com/YShiLMu/Elliott-Wave-BigA
 ```
 
 方式二：手动安装

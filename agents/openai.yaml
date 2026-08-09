@@ -1,0 +1,4 @@
+interface:
+  display_name: "波浪理论在大A"
+  short_description: "Elliott Wave 数浪、校验、概率排序与交易计划"
+  default_prompt: "使用 $elliott-wave-analysis 分析沪深300 日线走势，给出主备数浪、校验结果、失效价位与概率排序。"

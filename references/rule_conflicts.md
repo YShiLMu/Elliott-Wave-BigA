@@ -1,10 +1,10 @@
 # 11 规则冲突裁决（Rule Conflict Adjudication）——跨步骤知识
 
-> **定位**：本文件是"规则冲突与形态边界归属"的**唯一权威裁决流程**。数浪（`references/workflow.md（第 2 步）`）、验证（`references/workflow.md（第 3 步）`）、更新（`references/workflow.md（第 5 步）`）遇到 Rule 与 Rule、Rule 与 Guideline、Guideline 与 Guideline 的冲突，或形态边界归属不清时，按本文裁决。它不属于任何一个工作流步骤（03_工作流_workflow 的 01–05 各承载本步骤执行细则），故放 01_知识库。
+> **定位**：本文件是"规则冲突与形态边界归属"的**唯一权威裁决流程**。数浪（`references/workflow.md` 第 2 步）、验证（`references/workflow.md` 第 3 步）、更新（`references/workflow.md` 第 5 步）遇到 Rule 与 Rule、Rule 与 Guideline、Guideline 与 Guideline 的冲突，或形态边界归属不清时，按本文裁决。它不属于任何一个工作流步骤（工作流 01–05 各承载本步骤执行细则），故属跨步骤知识。
 >
-> **只裁决、不重复条文**：本文只写"冲突怎么裁决、按什么顺序裁决"，不重复展开规则条文。条文唯一权威在 `references/rules.md`（R1–R30）与 `references/guidelines.md`（G1–G25）；形态结构细节见 `references/patterns.md（推动浪）`、`references/patterns.md（楔形）`、`references/patterns.md（调整浪）`、`references/patterns.md（三角形）`；数据问题按 `references/data.md` 处理，不进入本裁决流程。
+> **只裁决、不重复条文**：本文只写"冲突怎么裁决、按什么顺序裁决"，不重复展开规则条文。条文唯一权威在 `references/rules.md`（R1–R30）与 `references/guidelines.md`（G1–G25）；形态结构细节见 `references/patterns.md`（推动浪/楔形/调整浪/三角形）；数据问题按 `references/data.md` 处理，不进入本裁决流程。
 >
-> **打包说明**：本文件是打包版规则冲突裁决，由 `01_知识库_knowledge/11_规则冲突裁决_rule_conflict_adjudication.md` 转换生成（仅编号与路径口径不同），**禁止直接修改，修改请改源**。
+> **打包说明**：本文件为打包版，由 `01_知识库_knowledge/11_规则冲突裁决_rule_conflict_adjudication.md` 转换生成（仅编号与路径口径不同），**禁止直接修改，修改请改源**；维护性章节（转换规则、验收清单）不打包，完整版见 `01_知识库_knowledge/11_规则冲突裁决_rule_conflict_adjudication.md`。
 
 ## 1. 裁决总原则
 

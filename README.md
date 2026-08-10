@@ -13,6 +13,15 @@
 
 分析非 A 股市场（如美股、港股）时不需要该前置 skill，由用户直接提供数据或图表。
 
+**`a-stock-data` 作者与致谢：**
+
+- 作者：Simon 林
+- X：[@linsizhen](https://x.com/linsizhen)
+- 邮箱：simonlin0423@gmail.com
+- 网址：[https://github.com/simonlin1212/a-stock-data](https://github.com/simonlin1212/a-stock-data)
+
+感谢 Simon 林开发并开源 `a-stock-data`：它提供了覆盖 A 股行情、资金面、新闻、公告、期权等维度的完整数据能力，是本技能分析 A 股时不可或缺的基石。感谢你的无私分享与持续维护，也向你的开源精神致敬 🙏
+
 ## 安装
 
 方式一：通过 Codex 技能安装器安装本仓库：

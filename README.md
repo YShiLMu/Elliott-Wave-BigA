@@ -15,12 +15,10 @@
 
 **`a-stock-data` 作者与致谢：**
 
-- 作者：Simon 林
-- X：[@linsizhen](https://x.com/linsizhen)
-- 邮箱：simonlin0423@gmail.com
+- 作者：Simon 林（[@linsizhen](https://x.com/linsizhen)）
 - 网址：[https://github.com/simonlin1212/a-stock-data](https://github.com/simonlin1212/a-stock-data)
 
-感谢 Simon 林开发并开源 `a-stock-data`：它提供了覆盖 A 股行情、资金面、新闻、公告、期权等维度的完整数据能力，是本技能分析 A 股时不可或缺的基石。感谢你的无私分享与持续维护，也向你的开源精神致敬 🙏
+感谢 Simon 林把 `a-stock-data` 开源出来，A 股的数据获取基本靠它，真的省了不少事。
 
 ## 安装
 

@@ -7,11 +7,11 @@
 <!--
   波浪理论网页报告模板（可复用）
   使用方式：本模板用于**直接填充**——复制本文件后，将全部 {{字段名}} 替换为本次分析数据，
-  图区填入 ew_chart.py 输出的 PNG **相对路径**（如 图表/主方案_全景.png、图表/主方案_放大.png），
-  禁止从零重写 HTML 结构（结构与 JS 保持模板原样，只替换数据与图片路径）。
+  图区图片由生成流程自动内嵌 base64（scripts/embed_report_images.py），请勿手工填写路径；
+  禁止从零重写 HTML 结构（结构与 JS 保持模板原样，只替换数据；图片占位符由脚本替换）。
   交付物规范：本网页与分析报告.md 是每次分析仅有的两件交付文档（归档于 <项目根目录>/分析输出/<标的名称_代码_YYYYMMDD_HHMM>/）；
   交易计划/失效价位/更新与跟踪以章节内嵌于两文档，不生成独立的交易计划.md、失效追踪.md、变更日志.md 与日线 CSV；
-  浪型图 PNG 仅存于 图表/ 子目录作内嵌素材（本网页用相对路径引用），不计为交付物；两份文档内容必须一致。
+  浪型图 PNG 仅存于 图表/ 子目录作内嵌素材（生成后转 base64 内嵌，本网页自包含），不计为交付物；两份文档内容必须一致。
   引用规范：见 references/rules.md R19/R20/R22/R23/R24、references/guidelines.md G21、references/guidelines.md 前言；术语与规则不得在此重新定义。
 -->
 <style>
@@ -112,7 +112,7 @@
       </div>
       <div class="viewer">
         <div class="viewport" id="viewport-main-pano">
-          <!-- 填写全景图路径：ew_chart.py 输出，覆盖完整数据范围，只标大级别结构 -->
+          <!-- 图片由 embed_report_images.py 自动内嵌 base64，请勿手工填写 -->
           <img class="pano-img" draggable="false" src="{{主方案全景图路径}}" alt="主方案全景图"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
           <div class="img-missing">主方案全景图缺失：请检查 {{主方案全景图路径}} 是否存在。</div>
@@ -129,7 +129,7 @@
       </div>
       <div class="viewer">
         <div class="viewport" id="viewport-main-zoom">
-          <!-- 填写放大图路径：ew_chart.py 输出（--last N 截取尾部区间），标注子浪细节 -->
+          <!-- 图片由 embed_report_images.py 自动内嵌 base64，请勿手工填写 -->
           <img class="pano-img" draggable="false" src="{{主方案放大图路径}}" alt="主方案放大图"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
           <div class="img-missing">主方案放大图缺失：请检查 {{主方案放大图路径}} 是否存在。</div>
@@ -148,7 +148,7 @@
       </div>
       <div class="viewer">
         <div class="viewport" id="viewport-alt-pano">
-          <!-- 填写替代方案全景图路径；替代方案存在时必须有此图（references/rules.md R24） -->
+          <!-- 替代方案存在时必须有此图（references/rules.md R24）；内嵌由脚本自动完成 -->
           <img class="pano-img" draggable="false" src="{{替代方案全景图路径}}" alt="替代方案全景图"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
           <div class="img-missing">替代方案全景图缺失：请检查 {{替代方案全景图路径}} 是否存在。</div>
@@ -165,7 +165,7 @@
       </div>
       <div class="viewer">
         <div class="viewport" id="viewport-alt-zoom">
-          <!-- 填写替代方案放大图路径 -->
+          <!-- 图片由 embed_report_images.py 自动内嵌 base64，请勿手工填写 -->
           <img class="pano-img" draggable="false" src="{{替代方案放大图路径}}" alt="替代方案放大图"
                onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
           <div class="img-missing">替代方案放大图缺失：请检查 {{替代方案放大图路径}} 是否存在。</div>

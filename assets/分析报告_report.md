@@ -11,7 +11,7 @@
 - 本模板是 references/workflow.md 第 4 步的交付载体，只做"表述规范化"，**不产生新数法**（references/workflow.md 第 4 步「输出归档」节）；
 - references/workflow.md 第 3 步结论为"验证不通过"时不得填写（references/workflow.md 第 4 步「输出归档」节）；
 - 初始轮次：references/workflow.md 第 4 步按本模板填写；更新轮次：references/workflow.md 第 5 步按字段映射直接覆盖（references/workflow.md 第 5 步第 8 节（字段映射））；
-- **交付物规范**：每次分析只交付两个文档——本模板输出的 `分析报告_<标的>_<代码>_<时间>.md` 与网页报告.html（归档于 `<项目根目录>/分析输出/<标的名称_代码_YYYYMMDD_HHMM>/`，归档规则见 SKILL.md「输出归档」）；**不生成独立文件**：交易计划（本章第 6 节）、失效价位（第 5 节）、更新与跟踪（第 8 节）均以章节内嵌；CSV 与独立 PNG 不交付（浪型图 PNG 仅存于 `图表/` 子目录，本报告用绝对路径 Markdown 嵌入，网页用相对路径填入）。两份文档中主备方案、失效价位、概率排序、简洁总结、关键价位表必须一致。
+- **交付物规范**：每次分析只交付两个文档——本模板输出的 `分析报告_<标的>_<代码>_<时间>.md` 与网页报告.html（归档于 `<项目根目录>/分析输出/<标的名称_代码_YYYYMMDD_HHMM>/`，归档规则见 SKILL.md「输出归档」）；**不生成独立文件**：交易计划（本章第 6 节）、失效价位（第 5 节）、更新与跟踪（第 8 节）均以章节内嵌；CSV 与独立 PNG 不交付（浪型图 PNG 仅存于 `图表/` 子目录作内嵌素材；生成后由 `scripts/embed_report_images.py` 转 base64 内嵌，本报告与网页均自包含；查看器不支持 data URI 时 md 回退绝对路径并注明）。两份文档中主备方案、失效价位、概率排序、简洁总结、关键价位表必须一致。
 
 ### 1.2 填写规则（五条规范与字段提示）
 
@@ -51,7 +51,7 @@
 - 【结构说明】：形态 + 子浪结构（来源：references/workflow.md 第 3 步移交 1）。
 - 【比率目标】：按斐波那契速查表（references/fibonacci.md 第 1 节）。
 - 【失效价位】：规则失效 + 结构失效，按失效价位表述规范书写（references/rules.md R20；结构失效按 references/rules.md 第 6 节注）。
-- 【浪型图嵌入】：插入主方案**两张图（全景 + 放大）**，使用 Markdown 图片语法并**必须使用绝对路径**；图标题含分析级别与时间范围（references/rules.md R22）、浪段标注与形态备注齐全（references/rules.md R23）。
+- 【浪型图嵌入】：插入主方案**两张图（全景 + 放大）**，使用 Markdown 图片语法；生成后由 `scripts/embed_report_images.py` 自动转 base64 内嵌（默认），查看器不支持 data URI 时回退绝对路径并注明；图标题含分析级别与时间范围（references/rules.md R22）、浪段标注与形态备注齐全（references/rules.md R23）。
   - 示例：![主方案全景图](C:/绝对路径/主方案_全景.png)
   - 示例：![主方案放大图](C:/绝对路径/主方案_放大.png)
 
@@ -146,6 +146,7 @@
 - [ ] 8 章节与 references/workflow.md 第 5 步第 8 节（字段映射）一致；
 - [ ] 输出顺序为"简明分析 → 浪型图 → 简洁总结"，总结放在所有内容最后且 ≤15 行（references/workflow.md 第 4 步第 2.2 节）；
 - [ ] 浪型图数量 = 候选方案数 × 2（每方案全景 + 放大，references/workflow.md 第 4 步第 2.1 节）；每图只画一个方案（references/rules.md R23）、标题含分析级别（references/rules.md R22）、失效价位带规则编号（references/rules.md R19、R20）。
+- [ ] 图片自包含：md/html 各含 4 个图片标记（base64 data URI，或回退绝对路径），由 scripts/embed_report_images.py 校验通过。
 
 ## 7. 实战示例：完整模板填写（示例值）
 

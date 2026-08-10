@@ -39,6 +39,7 @@ description: 按 Elliott Wave（艾略特波浪理论）分析市场或图表：
 
 按 8 章节结构输出分析报告，复制 `assets/分析报告_report.md` 填写（见 `references/workflow.md` 第 4 步）。
 报告与网页归档到 `<项目根目录>/分析输出/<标的名称_代码_YYYYMMDD_HHMM>/`（归档规范见本文第 5 节「输出归档」）。
+生成后运行 `scripts/embed_report_images.py <归档文件夹>`，自动把 `图表/` 下 PNG 转 base64 内嵌进 .md 与 .html（md 在查看器不支持 data URI 时可用 `--md-keep-absolute` 回退绝对路径并注明），校验通过才交付（见 `references/workflow.md` 第 4 步第 2.3 节）。
 
 **K 线图 + 浪型标注**：获取行情数据后、报告定稿前，用 `scripts/ew_chart.py` 为每个合法候选数法绘制**两张图——全景图 + 放大图**（图片数量 = 候选方案数 × 2；禁止主备混叠，见 `references/rules.md` R23）：全景图覆盖完整数据范围（数据起点不得擅自截断，图注标注"起点至最新"），只标注大级别结构（1-2-3-4-5 / A-B-C / W-X-Y）与大级别失效价位；放大图用 `--last N` 截取尾部区间（默认最近 250 根，或按用户指定），标注子浪编号（①②③ 或 i-iii）、支撑/阻力、失效价位与当前价格，建议 `--font-scale 1.2–1.4` 保证子浪标注清晰。图标题含分析级别与时间范围（`references/rules.md` R22）；浪段标注按 R23；失效价位红色虚线并注明规则编号（R19、R20）。图表用高清输出（dpi ≥ 150）。PNG 只用于嵌入交付物，保存后必须验证文件存在且可渲染（自检清单见 `references/workflow.md` 第 4 步第 2.1 节）。
 
@@ -114,7 +115,7 @@ description: 按 Elliott Wave（艾略特波浪理论）分析市场或图表：
    - 主方案与替代方案各用一句话描述（见 references/rules.md R24）；
    - Rule 校验结论：说明哪条规则决定取舍（例如"第 4 子浪与第 1 子浪重叠，违反 R7，故不标普通推动浪，改用楔形假设"）；
    - Guideline 概率排序依据：主备评分与失效距离（见 references/guidelines.md G21）。
-2. **浪型标注图（放在总结之前）**：每个方案两张图（全景 + 放大，图片数量 = 候选方案数 × 2，工作流输出约定，见 references/workflow.md 第 4 步第 2.1 节）；每张图只用 Python（matplotlib）绘制 K 线再叠加浪型标注，保存 PNG 后以绝对路径嵌入 .md、以相对路径填入 .html（脚本 `scripts/ew_chart.py`；自检见同一节）；标题含级别与时间范围（见 references/rules.md R22）；浪段标注不混用（见 references/rules.md R23）；每段浪注明形态类型；失效价位红色虚线 + 规则编号（见 references/rules.md R19、R20）；标出支撑/阻力与当前价格。
+2. **浪型标注图（放在总结之前）**：每个方案两张图（全景 + 放大，图片数量 = 候选方案数 × 2，工作流输出约定，见 references/workflow.md 第 4 步第 2.1 节）；每张图只用 Python（matplotlib）绘制 K 线再叠加浪型标注，保存 PNG 后由 `scripts/embed_report_images.py` 自动转 base64 内嵌进 .md 与 .html（自包含交付；md 在查看器不支持 data URI 时可回退绝对路径；脚本 `scripts/ew_chart.py`；内嵌校验见 references/workflow.md 第 4 步第 2.3 节）；标题含级别与时间范围（见 references/rules.md R22）；浪段标注不混用（见 references/rules.md R23）；每段浪注明形态类型；失效价位红色虚线 + 规则编号（见 references/rules.md R19、R20）；标出支撑/阻力与当前价格。
 3. **简洁总结（所有内容最后，≤15 行）**：严格按以下格式，每字段 1–3 句话：
 
    **标的【代码】（【名称】），截至【日期】收盘【价格】。**

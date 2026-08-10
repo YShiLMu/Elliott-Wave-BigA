@@ -298,6 +298,7 @@
     }
     viewers[id].reset = reset;
     viewers[id].render = render;
+    viewers[id].updateDims = updateDims;
 
     viewers[id].changeSpeed = function (delta) {
       var n = SPEED_OPTIONS.length;

@@ -51,7 +51,7 @@
 ## 6. 级别与概率排序
 
 - **G20** 级别错标通常只降低解释效率，不直接使数法失效；但声明级别后内部嵌套必须自洽（references/terminology.md 1.2.3；自洽性属 Rule，见 references/rules.md R4）。
-- **G21** 概率排序在多个合法数法间按 Guideline 命中数、结构完整度、斐波那契共振、失效价位距离（越远越安全）评分；排序不产生合法性判断，只影响仓位与计划（references/terminology.md 1.7.6）。评分权重（2:1:1:1）见 `references/workflow.md` 第 7 节。
+- **G21** 概率排序在多个合法数法间按 Guideline 命中数、结构完整度、斐波那契共振、失效价位距离（越远越安全）评分；排序不产生合法性判断，只影响仓位与计划（references/terminology.md 1.7.6）。评分权重（2:1:1:1）见 `references/workflow.md` 第 5 步第 7 节。
 
 ## 7. 形态位置与后势特征
 

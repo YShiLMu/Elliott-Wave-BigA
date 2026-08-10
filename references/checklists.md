@@ -47,7 +47,7 @@
 | --- | --- | --- | --- | --- | --- |
 | G-1 交替 | Guideline | references/guidelines.md G1 | 第 2 与第 4 浪调整类型不同 → +1；同型 → −1 | | |
 | G-2 等长 | Guideline | references/guidelines.md G2 | 第 3 浪延长时第 5 浪落在第 1 浪长度 0.618–1.0 倍 → +1；区间外 → 0；未延长 → 不适用 | | 无 −1 |
-| G-3 通道目标 | Guideline | references/guidelines.md G3 | 第 5 浪/失败浪终点距通道轨 ≤ 0.382×W → +1；否则 0/不适用 | | 无 −1 |
+| G-3 通道目标 | Guideline | references/guidelines.md G3 | 第 5 浪/失败浪终点距通道轨 ≤ 0.382×W → +1；否则 0/不适用 | | 阈值注册于 references/defaults.md D20，调整须披露；无 −1 |
 | G-4 通道突破处理 | Guideline | references/guidelines.md G4 | 通道边界被决定性突破（连续 2 根收盘在外，默认口径）后出现可重画通道的新摆动结构 → +1；未出现 → 0；未突破 → 不适用 | | 无 −1 |
 | G-5 延长频率 | Guideline | references/guidelines.md G9 | 一个推动浪未被数出两个延长浪 → +1；候选性延长（尚未确认）→ 0；确认两个延长 → −1 | | |
 | G-6 双回撤 | Guideline | references/guidelines.md G11 | 第 5 浪延长确认后，已走出第一轮回撤并出现反弹（离开第一轮回撤终点 ≥2 根收盘）→ +1；否 → 0；无延长 → 不适用 | | 无 −1 |

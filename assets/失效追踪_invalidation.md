@@ -2,15 +2,15 @@
 
 > **用途边界**：本模板为**内部工作底稿**（跨周期失效价位跟踪台账），产出**不进入 `分析输出/` 归档、不作为交付物**；需要交付的失效价位内容并入分析报告.md 的【5. 失效价位清单】与【8. 更新与跟踪】节（归档规则见 SKILL.md「输出归档」）。
 >
-> **本文件定位**：失效价位追踪台账模板，是 `references/rules.md` 6.6 节与 `references/workflow.md`（第 5 步） 第 2 节指定的落地记录文件。跨分析周期持续累积，每次更新只追加新记录、不覆盖历史；供 references/workflow.md 第 3 步、references/workflow.md 第 4 步、references/workflow.md 第 5 步共同读写。
+> **本文件定位**：失效价位追踪台账模板，是 `references/rules.md` 第 6 节注与 `references/workflow.md`（第 5 步） 第 2 节指定的落地记录文件。跨分析周期持续累积，每次更新只追加新记录、不覆盖历史；供 references/workflow.md 第 3 步、references/workflow.md 第 4 步、references/workflow.md 第 5 步共同读写。
 >
-> **前置依赖**：术语见 `references/terminology.md`（1.7.1），失效价位分类见 `references/rules.md` 6.6，概率经验见 `references/guidelines.md`（G21、G25），执行流程见 `references/workflow.md`（第 5 步）第 2、3、4 节，联动模板见同目录 `分析报告_report.md`、`交易计划_trade_plan.md`。
+> **前置依赖**：术语见 `references/terminology.md`（1.7.1），失效价位分类见 `references/rules.md` 第 6 节注，概率经验见 `references/guidelines.md`（G21、G25），执行流程见 `references/workflow.md`（第 5 步）第 2、3、4 节，联动模板见同目录 `分析报告_report.md`、`交易计划_trade_plan.md`。
 
 ## 1. 模板说明与使用前提
 
 ### 1.1 定位
 
-本台账记录每个方案的失效价位及其生命周期状态（**登记 → 监控 → 触及 → 处理 → 关闭**），区分两类失效价位（06 6.6）：
+本台账记录每个方案的失效价位及其生命周期状态（**登记 → 监控 → 触及 → 处理 → 关闭**），区分两类失效价位（references/rules.md 第 6 节注）：
 
 - **规则失效价位（Rule-based Invalidation）**：由具体结构规则（R5、R7、R9、R10、R11、R15、R29 等）推导，价格触及即方案失效（references/rules.md R19 为失效后处理规则）；
 - **结构失效价位（Structural Invalidation）**：由方案前提推导，不由硬性规则直接推导（references/rules.md 第 6 节注）。
@@ -18,7 +18,7 @@
 ### 1.2 记录原则
 
 - **只追加不覆盖**：每次更新仅追加新记录，不修改历史记录；
-- 同一失效价位一旦登记不得静默修改；如需调整（如失效价位移动、判定口径变更），必须记入变更日志（references/workflow.md 第 5 步第 8.2 节）。
+- 同一失效价位一旦登记不得静默修改；如需调整（如失效价位移动、判定口径变更），必须记入变更日志（references/workflow.md 第 5 步第 8 节（变更日志））。
 
 ## 2. 失效价位登记表
 
@@ -42,18 +42,18 @@
 
 ### 2.4 独立性与完备性
 
-每个方案必须登记至少一个**独立失效价位**（仅自身触发、其他方案不触发）；规则强制共享的价位（如两方案同为第 4 浪数法时的 R7 价位）允许存在，但不得作为唯一价位（references/rules.md R24；references/workflow.md 第 5 步第 4.1 节）。
+每个方案必须登记至少一个**独立失效价位**（仅自身触发、其他方案不触发）；规则强制共享的价位（如两方案同为第 4 浪数法时的 R7 价位）允许存在，但不得作为唯一价位（references/rules.md R24；references/workflow.md 第 5 步第 4 节）。
 
 ## 3. 结构失效判定口径
 
-### 3.1 口径优先级（references/workflow.md 第 5 步第 2.2 节）
+### 3.1 口径优先级（references/workflow.md 第 5 步第 2 节（判定标准））
 
 ① 形态文件已定义的量化口径（`references/patterns.md`（楔形） 第 5 节、`references/patterns.md`（三角形） 第 5 节）＞ ② 默认口径（连续 2 根 K 线收盘价位于边界外侧）＞ ③ 自定义口径（必须在报告中披露）。
 
 ### 3.2 明确区分
 
-- 单根影线刺破结构失效边界仅记录、不触发（references/workflow.md 第 5 步第 3.3 节）；
-- **规则失效价位不存在"不触发"情形**：按极端价位判定，盘中触及即触发，无"有效突破"滤网（references/rules.md R20；references/workflow.md 第 5 步第 2.2、3.3 节）。
+- 单根影线刺破结构失效边界仅记录、不触发（references/workflow.md 第 5 步第 3 节（不触发））；
+- **规则失效价位不存在"不触发"情形**：按极端价位判定，盘中触及即触发，无"有效突破"滤网（references/rules.md R20；references/workflow.md 第 5 步第 2、3 节）。
 
 ## 4. 监控日志表
 
@@ -61,7 +61,7 @@
 | --- | --- | --- | --- | --- |
 | （日期） | （区间最高/最低 + 收盘） | 是/否/无变化 | 规则/结构/— | （按第 5 节分支处理） |
 
-判定标准：规则失效按极端价位盘中触及即触发（references/rules.md R20）；结构失效按第 3 节口径判定（references/workflow.md 第 5 步第 2.2 节）。
+判定标准：规则失效按极端价位盘中触及即触发（references/rules.md R20）；结构失效按第 3 节口径判定（references/workflow.md 第 5 步第 2 节（判定标准））。
 
 > 触及失效价位时，**可选附 1 张标注触发点的局部 K 线图**（脚本见技能 `scripts/ew_chart.py`，用 `--last N` 截取触发点附近窗口，失效价位用红色虚线标注），便于跨周期回溯。
 
@@ -69,13 +69,13 @@
 
 | 情形 | 处理动作 |
 | --- | --- |
-| 主方案失效，替代方案未失效 | 替代方案升级为新主方案；升级后重新执行 references/workflow.md 第 3 步（references/workflow.md 第 5 步第 2.3 节；references/workflow.md 第 3 步第 2–6 节） |
-| 主方案与所有替代方案均失效 | 硬性重新数浪，退回 references/workflow.md 第 2 步；级别可能需要重新确认（references/rules.md R19；references/workflow.md 第 5 步第 2.3 节） |
-| 仅结构失效价位触及 | 当前方案降级"观察中"；启动替代方案并行跟踪，但不立即升级（references/rules.md 第 6 节注；references/workflow.md 第 5 步第 2.3 节） |
+| 主方案失效，替代方案未失效 | 替代方案升级为新主方案；升级后重新执行 references/workflow.md 第 3 步（references/workflow.md 第 5 步第 2 节（触及分支）；references/workflow.md 第 3 步） |
+| 主方案与所有替代方案均失效 | 硬性重新数浪，退回 references/workflow.md 第 2 步；级别可能需要重新确认（references/rules.md R19；references/workflow.md 第 5 步第 2 节（触及分支）） |
+| 仅结构失效价位触及 | 当前方案降级"观察中"；启动替代方案并行跟踪，但不立即升级（references/rules.md 第 6 节注；references/workflow.md 第 5 步第 2 节（触及分支）） |
 
 ## 6. 方案状态与切换记录
 
-### 6.1 表结构（references/workflow.md 第 5 步第 4.4 节）
+### 6.1 表结构（references/workflow.md 第 5 步第 4 节）
 
 | 方案名称 | 原状态 | 新状态 | 变更原因 | 失效价位 |
 | --- | --- | --- | --- | --- |
@@ -85,20 +85,20 @@
 
 ### 6.2 切换后必须记录
 
-- 新主方案已重新通过 references/workflow.md 第 3 步（references/workflow.md 第 3 步第 2–6 节）；
-- 活跃方案不足 2 个（主 + 替代）时，基于当前价格行为生成新替代（references/rules.md R24；references/workflow.md 第 5 步第 4.3 节）。
+- 新主方案已重新通过 references/workflow.md 第 3 步（references/workflow.md 第 3 步）；
+- 活跃方案不足 2 个（主 + 替代）时，基于当前价格行为生成新替代（references/rules.md R24；references/workflow.md 第 5 步第 4 节）。
 
 ## 7. 模板自检清单
 
 - [ ] 每方案失效价位独立且对应明确规则/前提（references/rules.md R24、R19）；
 - [ ] 失效价位按极端价位（含影线）标注，无"附近""左右"（references/rules.md R20）；
-- [ ] 规则失效与结构失效分类正确（06 6.6）；
-- [ ] 结构失效判定口径已注明（形态文件/默认/自定义）（references/workflow.md 第 5 步第 2.2 节）；
-- [ ] 每次触及均有处理动作与变更记录（references/workflow.md 第 5 步第 8.2 节）。
+- [ ] 规则失效与结构失效分类正确（references/rules.md 第 6 节注）；
+- [ ] 结构失效判定口径已注明（形态文件/默认/自定义）（references/workflow.md 第 5 步第 2 节（判定标准））；
+- [ ] 每次触及均有处理动作与变更记录（references/workflow.md 第 5 步第 8 节（变更日志））。
 
 ## 8. 实战示例：跨周期失效追踪（示例值）
 
-> 以下所有数值均为**示例**，非真实行情；复用 references/workflow.md 第 4 步第 7 节假设场景（主方案第 4 浪平台形、替代方案第 4 浪三角形）。
+> 以下所有数值均为**示例**，非真实行情；复用本模板第 8 节实战示例的假设场景（主方案第 4 浪平台形、替代方案第 4 浪三角形）。
 
 **【2. 失效价位登记表】**（示例）
 
@@ -118,26 +118,26 @@
 
 **【5. 触发处理分支】**（示例）
 
-主方案规则失效触发，替代方案未失效 → 属"主方案失效，替代方案未失效"分支：替代方案（三角形）升级为新主方案，并重新执行 references/workflow.md 第 3 步（references/workflow.md 第 5 步第 2.3 节；references/workflow.md 第 3 步第 2–6 节）。
+主方案规则失效触发，替代方案未失效 → 属"主方案失效，替代方案未失效"分支：替代方案（三角形）升级为新主方案，并重新执行 references/workflow.md 第 3 步（references/workflow.md 第 5 步第 2 节（触及分支）；references/workflow.md 第 3 步）。
 
 **【6. 方案状态与切换记录】**（示例）
 
 | 方案名称 | 原状态 | 新状态 | 变更原因 | 失效价位 |
 | --- | --- | --- | --- | --- |
 | 主方案 平台形 | 监控中 | **已失效（已处理，保留回溯）** | 触及规则失效价位 160（references/rules.md R7、R20、R19） | 160 |
-| 替代方案 三角形 | 监控中 | **新主方案（重新验证中）** | 主方案失效后按 references/workflow.md 第 5 步第 2.3 节升级 | 下边界约 200（结构失效） |
-| 新替代（待生成） | — | 待登记（生成时同步标注失效价位，references/rules.md R24） | 活跃方案不足 2 个，需基于当前价格行为生成（references/rules.md R24；references/workflow.md 第 5 步第 4.3 节） | 待登记 |
+| 替代方案 三角形 | 监控中 | **新主方案（重新验证中）** | 主方案失效后按 references/workflow.md 第 5 步第 2 节（触及分支）升级 | 下边界约 200（结构失效） |
+| 新替代（待生成） | — | 待登记（生成时同步标注失效价位，references/rules.md R24） | 活跃方案不足 2 个，需基于当前价格行为生成（references/rules.md R24；references/workflow.md 第 5 步第 4 节） | 待登记 |
 
 **【变更日志】**（示例）
 
 | 改动内容 | 改动原因 | 引用依据 |
 | --- | --- | --- |
 | 主方案失效价位 160 状态改为"已触发/已处理" | 2026-08-09 盘中最低 159.8 触及 160（第 1 浪高点，违反 R7） | references/rules.md R7、R20、R19 |
-| 替代方案升级为新主方案 | 主失效、替代未失效分支 | references/workflow.md 第 5 步第 2.3 节 |
-| 新主方案待 references/workflow.md 第 3 步验证 | 升级后必须重新验证 | references/workflow.md 第 3 步第 2–6 节 |
+| 替代方案升级为新主方案 | 主失效、替代未失效分支 | references/workflow.md 第 5 步第 2 节（触及分支） |
+| 新主方案待 references/workflow.md 第 3 步验证 | 升级后必须重新验证 | references/workflow.md 第 3 步 |
 
 **审计说明**：本台账历史记录（2026-08-08 及之前）未被覆盖，全部变更以追加形式记录，可完整追溯。
 
 ---
 
-**小结**：失效追踪 = 登记（规则/结构分类，06 6.6）→ 监控（两口径判定，references/workflow.md 第 5 步第 2.2 节）→ 触发（三分支处理）→ 状态切换（升级/退回/降级）→ 关闭与日志。只追加不覆盖，保证每一条失效价位的一生都可审计。
+**小结**：失效追踪 = 登记（规则/结构分类，references/rules.md 第 6 节注）→ 监控（两口径判定，references/workflow.md 第 5 步第 2 节（判定标准））→ 触发（三分支处理）→ 状态切换（升级/退回/降级）→ 关闭与日志。只追加不覆盖，保证每一条失效价位的一生都可审计。

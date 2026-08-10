@@ -10,7 +10,7 @@ description: 按 Elliott Wave（艾略特波浪理论）分析市场或图表：
 ## 1. 输入准备与数据获取
 
 - 分析 A 股：先调用 `a-stock-data` skill 获取指定级别与时间范围的行情（日 K/周 K/月 K 均可），再开始数浪；其他市场：以用户提供的数据或图表为准。
-- 取数协议唯一权威：按 `references/data.md` 执行"函数映射 → 参数默认值 → 统一 CSV 输出 → 降级链"。
+- 取数协议唯一权威：按 `references/data.md` 执行"函数映射 → 参数默认值 → 统一 CSV 输出 → 降级链"；**协议源文件见 `01_知识库_knowledge/10_数据获取协议_data.md`**，`references/data.md` 由其转换生成（仅编号/路径口径不同），修改必须改源。
 - 复权口径（默认目标与可执行路径）：长周期/大级别默认目标后复权（hfq），短中期可前复权（qfq）；mootdx `bars()` 为不复权原始价，无除权除息数据时**不得自行计算 hfq**，自动降级为腾讯 fqkline 前复权并披露 qfq，禁止声称 hfq；报告【1 分析前提】数据基准必须披露复权方式 + 数据源 + 截至时间三项（见 references/data.md 第 2 节）。
 - 无论数据来源，先提取**极端价位（含影线）序列**：所有摆动点、失效价位、边界与比率计算一律以含影线的最高/最低价为准，不以收盘价替代（见 references/rules.md R20）。
 - 数据不足或无法确认内部子浪时，如实说明并保守处理（见 references/guidelines.md G12），不得编造后续行情。
@@ -82,6 +82,7 @@ description: 按 Elliott Wave（艾略特波浪理论）分析市场或图表：
 | 工作流细节与交接格式 | `references/workflow.md` |
 | 项目默认口径（须披露的量化约定） | `references/defaults.md` |
 | A 股数据获取协议（函数映射、默认参数、CSV 契约、降级链） | `references/data.md` |
+| 规则冲突与形态边界裁决 | `references/rule_conflicts.md` |
 
 ## 5. 模板与输出（assets）
 

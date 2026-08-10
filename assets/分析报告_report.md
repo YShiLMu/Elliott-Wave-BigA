@@ -85,6 +85,7 @@
 
 - 【建议关注项】：来自 references/workflow.md 第 3 步移交 5 / references/workflow.md 第 5 步变更日志中的问题摘要部分。
 - 【歧义说明】：主备方案的分歧点与等待确认的结构。
+- 【歧义裁决依据】：主备方案的歧义若涉及规则冲突或形态边界归属（如双锯齿形 vs 联合形、三角形 vs 楔形 vs 平台形），注明按 `references/rule_conflicts.md` 第 2、3 节裁决的结论；无冲突歧义时填"不适用"。
 
 ### 2.8 【8. 更新与跟踪】
 
@@ -207,6 +208,7 @@
 
 - 建议关注项：C 浪比率目标按 references/fibonacci.md 第 2.2 节自 C 浪起点（B 终点）投射，且目标区须同时满足变体约束（C 低于 A 终点 185）与父级规则失效价位约束（C 高于第 1 浪高点 160）；替代方案 D/E 尚未完成，三角形确认待定。
 - 歧义说明：平台形与三角形均合法，最终区分依赖 C/D 子浪结构展开。
+- 歧义裁决依据：按 `references/rule_conflicts.md` 第 3 节——结构证据不足以定案，位置约束（references/guidelines.md G23）不构成合法性，暂按 references/guidelines.md G21 计分排序，保持主备多重数浪（references/rules.md R24）。
 
 **【8. 更新与跟踪】**（示例）
 

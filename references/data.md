@@ -1,6 +1,6 @@
-# 数据获取协议（Data Acquisition Protocol）——唯一权威
+# 10 数据获取协议（Data Acquisition Protocol）——唯一权威
 
-> **定位**：本文件是波浪分析中"如何获取行情数据"的**唯一权威文档**。`SKILL.md` 第 1 节与 `references/workflow.md` 第 1 步均指向本文件；取数相关问题以本文为准，禁止在其他文件另立口径。
+> **定位**：本文件是打包版数据获取协议，由 `01_知识库_knowledge/10_数据获取协议_data.md` 转换生成（仅编号与路径口径不同），**禁止直接修改，修改请改源**。`SKILL.md` 第 1 节与 `references/workflow.md` 第 1 步均指向本文件；取数相关问题以本文为准，禁止在其他文件另立口径。
 >
 > **依据**：函数名与参数与 a-stock-data（V3.6.0）「端点路由速查」「备用源速查 & 降级策略」K 线行一致；实现细节、内嵌代码与限流策略以 a-stock-data skill 为准，本文只约定"取什么、怎么取、降级到哪、输出成什么"。
 
@@ -38,8 +38,9 @@
 - **列**：`date,open,high,low,close[,volume]`，一律小写、按日期升序；**volume 为可选列**（`scripts/ew_chart.py` 只读取前五列，不依赖 volume；volume 仅作数据自检/量能参考）。
 - **元信息**：CSV 头部注释或配套字段必须包含：复权标记（none/qfq/hfq，hfq 必须注明计算依据）、数据源（mootdx/腾讯/百度/新浪/同花顺/用户提供）、截至时间（最后一根 K 线的日期时间）。
 - **说明**：`scripts/ew_chart.py` 与极端价位提取（references/rules.md R20）都依赖此固定格式，禁止自定义列名。
+- **用途边界**：CSV 仅用于分析过程、不进入交付文件夹；交付文档中的图片内嵌见 `scripts/embed_report_images.py`（references/workflow.md 第 4 步第 2.3 节）。
 
-> ⚠️ `ew_chart.py` 用 `pd.read_csv()` 默认不识别 `#` 注释行：直接喂给脚本的 CSV 只能包含表头 + 数据行，元信息优先用配套字段携带；确需行内注释时，读取方必须带 `comment="#"`。
+> ⚠️ `scripts/ew_chart.py` 用 `pd.read_csv()` 默认不识别 `#` 注释行：直接喂给脚本的 CSV 只能包含表头 + 数据行，元信息优先用配套字段携带；确需行内注释时，读取方必须带 `comment="#"`。
 
 ```text
 配套字段（sidecar）示例：

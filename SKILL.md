@@ -10,8 +10,19 @@ description: 按 Elliott Wave（艾略特波浪理论）分析市场或图表：
 ## 1. 输入准备与数据获取
 
 - 分析 A 股：先调用 `a-stock-data` skill 获取指定级别与时间范围的行情（日 K/周 K/月 K 均可），再开始数浪；其他市场：以用户提供的数据或图表为准。
+- 取数协议唯一权威：按 `references/data.md` 执行"函数映射 → 参数默认值 → 统一 CSV 输出 → 降级链"。
+- 复权口径（默认目标与可执行路径）：长周期/大级别默认目标后复权（hfq），短中期可前复权（qfq）；mootdx `bars()` 为不复权原始价，无除权除息数据时**不得自行计算 hfq**，自动降级为腾讯 fqkline 前复权并披露 qfq，禁止声称 hfq；报告【1 分析前提】数据基准必须披露复权方式 + 数据源 + 截至时间三项（见 references/data.md 第 2 节）。
 - 无论数据来源，先提取**极端价位（含影线）序列**：所有摆动点、失效价位、边界与比率计算一律以含影线的最高/最低价为准，不以收盘价替代（见 references/rules.md R20）。
 - 数据不足或无法确认内部子浪时，如实说明并保守处理（见 references/guidelines.md G12），不得编造后续行情。
+
+### 1.1 与 a-stock-data 的交接规则（Handoff Rules）
+
+两个 skill 同时触发时，按以下顺序执行，并把 a-stock-data 的读取范围限制到最小：
+
+1. **只读章节清单**：取数时只读 a-stock-data 的「端点路由速查」与「K 线相关章节」——§1.1 `tdx_client()`（`.bars()`）、§1.2 `tencent_quote()`、§1.3 `baidu_kline_with_ma()`、「备用源速查 & 降级策略」K 线行（全历史/分钟）。**禁止整篇加载其 SKILL.md（3000+ 行）**；研报、信号、资金面、新闻、公告、打板、期权、舆情等章节本 skill 不需要，一律不读。
+2. **职责边界**：a-stock-data 只管取数与防封（mootdx 库烂尾、BESTIP bug、东财限流、降级实现）；波浪规则（references/rules.md）、校验（references/checklists.md）、概率经验（references/guidelines.md）、报告（assets/）、复权口径与数据自检（references/data.md、references/workflow.md）一律以本 skill 为准；a-stock-data 返回的原始数据不构成任何数浪结论。
+3. **触发顺序**：先按 `references/data.md` 取数协议调用 a-stock-data → 取回数据后按本 skill 数据自检清单校验（references/workflow.md 第 1 步「数据自检」）→ 通过后再进入数浪流程；任一自检"不通过"退回重新取数或降级标注，禁止带病数浪。
+4. **口径唯一权威**：取数口径（函数映射、参数默认值、CSV 输出契约、复权默认与披露、降级链）以本 skill 的 `references/data.md` 为唯一权威；a-stock-data 只提供数据端点，不定义分析口径。
 
 ## 2. 核心约定（必须遵守）
 
@@ -70,20 +81,21 @@ description: 按 Elliott Wave（艾略特波浪理论）分析市场或图表：
 | 逐条校验清单 | `references/checklists.md` |
 | 工作流细节与交接格式 | `references/workflow.md` |
 | 项目默认口径（须披露的量化约定） | `references/defaults.md` |
+| A 股数据获取协议（函数映射、默认参数、CSV 契约、降级链） | `references/data.md` |
 
 ## 5. 模板与输出（assets）
 
 **交付物规范（每次分析只交付两个文档）**：
 
-- 归档位置：`<项目根目录>/分析输出/<标的名称_代码_YYYYMMDD_HHMM>/`（归档规范见本文第 5 节「输出归档」）；
-- **分析报告_<标的>_<代码>_<时间>.md**：按 `assets/分析报告_report.md` 模板输出；交易计划（第 6 章）、失效价位（第 5 章）、更新与跟踪（第 8 章）内容完整并入，不再单独成文件；浪型图以 Markdown 图片语法嵌入，**必须使用绝对路径**引用 `分析输出/<文件夹名>/图表/<PNG>`，保证可渲染；
-- **网页报告_<标的>_<代码>_<时间>.html**：复制 `assets/网页报告_web_report.html` **直接填充**生成（所有 `{{字段名}}` 替换为本次分析数据，图区填入 PNG 相对路径，如 `图表/主方案_全景.png`），禁止从零重写 HTML 结构；
+- 归档位置：`<项目根目录>/分析输出/<标的名称_代码_YYYYMMDD_HHMM>/`（`<项目根目录>` 以运行时工作区根目录为准；归档规范见本文第 5 节「输出归档」）；
+- **分析报告_<标的>_<代码>_<时间>.md**：按 `assets/分析报告_report.md` 模板输出；交易计划（第 6 章）、失效价位（第 5 章）、更新与跟踪（第 8 章）内容完整并入，不再单独成文件；浪型图由 `scripts/embed_report_images.py` 自动 base64 内嵌（文档自包含）；查看器不支持 data URI 时回退绝对路径引用 `分析输出/<文件夹名>/图表/<PNG>` 并注明（见 references/workflow.md 第 4 步第 2.3 节）；
+- **网页报告_<标的>_<代码>_<时间>.html**：复制 `assets/网页报告_web_report.html` **直接填充**生成（所有 `{{字段名}}` 替换为本次分析数据；图区保留 `{{主方案全景图路径}}` 等 4 个图片占位符，由 `scripts/embed_report_images.py` 注入 base64，禁止手工填路径），禁止从零重写 HTML 结构；
 - 两份文档中主备方案、失效价位、概率排序、简洁总结、关键价位表必须一致。
 
 **不再生成**：独立交易计划.md、失效追踪.md、变更日志.md、日线 CSV、独立 PNG——浪型图仅作内嵌素材存于该文件夹 `图表/` 子目录。
 
 - `assets/分析报告_report.md`：第 4 步报告输出时复制填写（**交付文档**）；
-- `assets/网页报告_web_report.html`：生成分析报告时，复制该模板，填入数据、浪型图与简洁总结后交付网页（**交付文档**，含主备方案标签页与末尾总结，见 `references/workflow.md` 第 4 步输出结构）；
+- `assets/网页报告_web_report.html`：生成分析报告时，复制该模板，填入数据与简洁总结后交付网页（浪型图占位符由 `scripts/embed_report_images.py` 注入 base64；**交付文档**，含主备方案标签页与末尾总结，见 `references/workflow.md` 第 4 步输出结构）；
 - `assets/每日复盘_daily_review.md`、`assets/失效追踪_invalidation.md`、`assets/交易计划_trade_plan.md`：**仅作内部工作底稿**（盘中草稿、跨周期失效跟踪、仓位草稿），产出**不进入 `分析输出/` 归档、不作为交付物**；需要交付的内容分别并入分析报告.md 对应章节（交易计划→第 6 章、失效价位与更新跟踪→第 5/8 章、复盘更新→第 8 章）。
 
 模板不加载进上下文；交付文档复制到归档文件夹填写，工作底稿复制到临时/工作目录填写、不进入 `分析输出/`。

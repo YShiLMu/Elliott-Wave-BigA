@@ -30,8 +30,8 @@ https://github.com/YShiLMu/Elliott-Wave-BigA
 
 方式二：手动安装
 
-1. 下载本仓库 zip 并解压；
-2. 将解压出的目录改名为 `elliott-wave-biga`；
+1. `git clone https://github.com/YShiLMu/Elliott-Wave-BigA.git`（或下载仓库源码）；
+2. 将目录改名为 `elliott-wave-biga`；
 3. 放到 `~/.codex/skills/` 下，重启 Codex；
 4. 在对话中使用 `$elliott-wave-biga` 调用。
 

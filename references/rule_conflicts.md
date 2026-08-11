@@ -1,16 +1,18 @@
-# 11 规则冲突裁决（Rule Conflict Adjudication）——跨步骤知识
+> **打包说明**：本文件由 `01_知识库_knowledge/11_规则冲突裁决_rule_conflict_adjudication.md` 转换生成（仅编号与路径口径不同），**禁止直接修改，修改请改源**；维护性章节（转换规则、验收清单）不打包，完整版见 `01_知识库_knowledge/11_规则冲突裁决_rule_conflict_adjudication.md`。
+>
 
-> **定位**：本文件是"规则冲突与形态边界归属"的**唯一权威裁决流程**。数浪（`references/workflow.md` 第 2 步）、验证（`references/workflow.md` 第 3 步）、更新（`references/workflow.md` 第 5 步）遇到 Rule 与 Rule、Rule 与 Guideline、Guideline 与 Guideline 的冲突，或形态边界归属不清时，按本文裁决。它不属于任何一个工作流步骤（工作流 01–05 各承载本步骤执行细则），故属跨步骤知识。
+# 规则冲突裁决（Rule Conflict Adjudication）——跨步骤知识
+
+> **定位**：本文件是"规则冲突与形态边界归属"的**唯一权威裁决流程**。数浪（`references/workflow.md（第 2 步）`）、验证（`references/workflow.md（第 3 步）`）、更新（`references/workflow.md（第 5 步）`）遇到 Rule 与 Rule、Rule 与 Guideline、Guideline 与 Guideline 的冲突，或形态边界归属不清时，按本文裁决。它不属于任何一个工作流步骤（工作流 01–05 各承载本步骤执行细则），故属跨步骤知识。
 >
-> **只裁决、不重复条文**：本文只写"冲突怎么裁决、按什么顺序裁决"，不重复展开规则条文。条文唯一权威在 `references/rules.md`（R1–R30）与 `references/guidelines.md`（G1–G25）；形态结构细节见 `references/patterns.md`（推动浪/楔形/调整浪/三角形）；数据问题按 `references/data.md` 处理，不进入本裁决流程。
+> **只裁决、不重复条文**：本文只写"冲突怎么裁决、按什么顺序裁决"，不重复展开规则条文。条文唯一权威在 `references/rules.md`（R1–R30）与 `references/guidelines.md`（G1–G25）；形态结构细节见 `references/patterns.md（推动浪）`、`references/patterns.md（楔形）`、`references/patterns.md（调整浪）`、`references/patterns.md（三角形）`；数据问题按 `references/data.md` 处理，不进入本裁决流程。
 >
-> **打包说明**：本文件为打包版，由 `01_知识库_knowledge/11_规则冲突裁决_rule_conflict_adjudication.md` 转换生成（仅编号与路径口径不同），**禁止直接修改，修改请改源**；维护性章节（转换规则、验收清单）不打包，完整版见 `01_知识库_knowledge/11_规则冲突裁决_rule_conflict_adjudication.md`。
 
 ## 1. 裁决总原则
 
 - **Rule 优先于 Guideline**：任一 Rule 违反即数法无效（references/rules.md R19）；Guideline 违反只降低概率，并在输出中说明理由（references/guidelines.md 前言）。Guideline 不得豁免 Rule——references/guidelines.md G20 只说明级别错标的概率影响，不豁免 references/rules.md R4 的嵌套自洽判定。
 - **例外条款先验证条件、后适用例外**：例外条款必须先验证其适用条件，满足才可豁免基础规则。典型如重叠例外 references/rules.md R8–R11：先查楔形位置（references/rules.md R9/R10）与子浪结构，并按极端价位（references/rules.md R20）判定，全部满足才豁免 references/rules.md R7；条件不满足仍按 references/rules.md R7 判违反（references/rules.md R11）。
-- **本文只写裁决方式**：条文与判定标准以 `references/rules.md` 与 `references/guidelines.md` 为唯一权威；本文不新增、不改写任何 Rule/Guideline，也不重复展开条文内容。
+- **本文只写裁决方式**：条文与判定标准以 references/rules.md、references/guidelines.md 为唯一权威；本文不新增、不改写任何 Rule/Guideline，也不重复展开条文内容。
 
 ## 2. 冲突类型与处理
 

@@ -51,6 +51,7 @@ description: 按 Elliott Wave（艾略特波浪理论）分析市场或图表：
 按 8 章节结构输出分析报告，复制 `assets/分析报告_report.md` 填写（见 `references/workflow.md` 第 4 步）。
 报告与网页归档到 `<项目根目录>/分析输出/<标的名称_代码_YYYYMMDD_HHMM>/`（归档规范见本文第 5 节「输出归档」）。
 生成后运行 `scripts/embed_report_images.py <归档文件夹>`，自动把 `图表/` 下 PNG 转 base64 内嵌进 .md 与 .html（md 在查看器不支持 data URI 时可用 `--md-keep-absolute` 回退绝对路径并注明），校验通过才交付（见 `references/workflow.md` 第 4 步第 2.3 节）。
+网页报告复制 `assets/网页报告_web_report.html` 模板填充生成（`{{字段}}` 全部替换，图区 4 个图片占位符由 `scripts/embed_report_images.py` 注入 base64），禁止从零重写 HTML；非模板生成判"不通过"（自检硬项见本文第 6 节，字段清单与骨架见本文第 9 节）。
 
 **K 线图 + 浪型标注**：获取行情数据后、报告定稿前，用 `scripts/ew_chart.py` 为每个合法候选数法绘制**两张图——全景图 + 放大图**（图片数量 = 候选方案数 × 2；禁止主备混叠，见 `references/rules.md` R23）：全景图覆盖完整数据范围（数据起点不得擅自截断，图注标注"起点至最新"），只标注大级别结构（1-2-3-4-5 / A-B-C / W-X-Y）与大级别失效价位；放大图用 `--last N` 截取尾部区间（默认最近 250 根，或按用户指定），标注子浪编号（①②③ 或 i-iii）、支撑/阻力、失效价位与当前价格，建议 `--font-scale 1.2–1.4` 保证子浪标注清晰。图标题含分析级别与时间范围（`references/rules.md` R22）；浪段标注按 R23；失效价位红色虚线并注明规则编号（R19、R20）。图表用高清输出（dpi ≥ 150）。PNG 只用于嵌入交付物，保存后必须验证文件存在且可渲染（自检清单见 `references/workflow.md` 第 4 步第 2.1 节）。
 
@@ -83,6 +84,7 @@ description: 按 Elliott Wave（艾略特波浪理论）分析市场或图表：
 | 项目默认口径（须披露的量化约定） | `references/defaults.md` |
 | A 股数据获取协议（函数映射、默认参数、CSV 契约、降级链） | `references/data.md` |
 | 规则冲突与形态边界裁决 | `references/rule_conflicts.md` |
+| 网页报告输出 | `assets/网页报告_web_report.html` |
 
 > **打包转换约定**：`references/` 与 `assets/` 均由仓库 01–05 源文件转换生成（仅编号与路径口径不同）；维护性章节（转换规则、验收清单等）不打包，打包版文件头注明完整版见源；修改必须改源，禁止直接修改打包版。
 
@@ -111,6 +113,7 @@ description: 按 Elliott Wave（艾略特波浪理论）分析市场或图表：
 - 报告必须声明级别、不混用标注、失效价位精确到具体价位（见 references/rules.md R20、R22、R23）。
 - 概率表述用"大概率 / 倾向于 / 通常"，禁止"必然 / 一定 / 绝对"（见 references/guidelines.md 前言）。
 - 假设数据必须显著标注；后续走势未发生时如实标注，禁止编造。
+- 网页报告必须由模板生成：校验模板头部特征注释（"波浪理论网页报告模板"）与结构标记（`class="pano-img"` 等）齐全、无 `{{字段}}` 残留；非模板生成判不通过。
 
 ## 7. 禁止事项
 
@@ -143,3 +146,59 @@ description: 按 Elliott Wave（艾略特波浪理论）分析市场或图表：
    **核心方法论启示：**【本次数浪体现的 Rule/Guideline 设计逻辑，一句话】
 
 总结禁止复述完整分析过程，只给结论、关键价位与仓位；概率表述用"大概率/倾向于/通常"，禁止"必然/一定/绝对"（见 references/guidelines.md 前言）。
+
+## 9. 两种使用环境（网页报告生成）
+
+网页报告的唯一合法来源是 `assets/网页报告_web_report.html` 模板；按运行环境分两种生成方式，任一方式都必须保留模板头部特征注释与结构标记。
+
+### 9.1 可读写文件的 Agent（主路径）
+
+复制 `assets/网页报告_web_report.html` 为 `网页报告_<标的>_<代码>_<时间>.html` → 替换全部 `{{字段}}`（清单见 9.3）→ 图区 4 个图片占位符由 `scripts/embed_report_images.py` 注入 base64 → 校验模板头部特征注释与结构标记齐全、无 `{{字段}}` 残留。禁止从零手写 HTML 结构，禁止在非模板文件上填充。
+
+### 9.2 纯对话型 AI（无文件工具）
+
+无文件读写能力时，按 9.3「模板字段清单」+ 9.4「最小结构骨架」等价重建同构 HTML，并在输出头部注明"按模板结构等价重建"。重建必须保留：模板头部特征注释（"波浪理论网页报告模板"）、`.tabs`/`.tab-panel` 主备切换、`.viewport` + `.pano-img` 查看器结构、关键价位 table、简洁总结与页脚；交互 JS 可保留模板等价实现（缩放/拖拽/复位），无交互要求时可简化为静态展示并注明。
+
+### 9.3 模板字段清单（与 `assets/网页报告_web_report.html` 一一对应，共 29 个）
+
+- **页面字段（19）**：`{{标的名称}}`、`{{标的代码}}`、`{{分析日期}}`、`{{分析级别}}`、`{{收盘价}}`、`{{核心判断}}`、`{{当前关键形态}}`、`{{备选方案}}`、`{{概率与仓位}}`、`{{数据范围}}`、`{{放大图数据范围}}`、`{{上方突破观察价位}}`、`{{上方突破观察说明}}`、`{{下方防守价位}}`、`{{下方防守说明}}`、`{{纪律止损价位}}`、`{{纪律止损说明}}`、`{{数据来源}}`、`{{生成时间}}`；
+- **图区图片占位符（4，由 `scripts/embed_report_images.py` 注入 base64，禁止手工填路径）**：`{{主方案全景图路径}}`、`{{主方案放大图路径}}`、`{{替代方案全景图路径}}`、`{{替代方案放大图路径}}`；
+- **简洁总结字段（6）**：`{{总结核心判断}}`、`{{总结当前关键形态}}`、`{{总结备选方案}}`、`{{总结概率与仓位}}`、`{{总结关键价位}}`、`{{总结核心方法论启示}}`。
+
+> 注：模板头部注释里的「字段名」只是通用说法（"将全部字段替换为分析数据"），不是可填充字段；实际可填充字段为上列 29 个。
+
+### 9.4 最小结构骨架（≤30 行，精简注释形式）
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{标的名称}} · Elliott Wave 分析报告</title>
+<!-- 模板头部特征注释：波浪理论网页报告模板（可复用）——重建必须保留 -->
+</head>
+<body><div class="container">
+  <header><h1>{{标的名称}}（{{标的代码}}）· Elliott Wave 分析</h1>
+    <div class="meta"><span>{{分析日期}}</span><span>{{分析级别}}</span><span>{{收盘价}}</span></div></header>
+  <section><h2>简明分析说明</h2>
+    <p>{{核心判断}}</p><p>{{当前关键形态}}</p><p>{{备选方案}}</p><p>{{概率与仓位}}</p></section>
+  <section><h2>浪型标注图</h2>
+    <div class="tabs"><button class="tab-btn active">主方案</button><button class="tab-btn">替代方案</button></div>
+    <div class="tab-panel active">
+      <div class="viewport"><img class="pano-img" src="{{主方案全景图路径}}"></div>
+      <div class="viewport"><img class="pano-img" src="{{主方案放大图路径}}"></div></div>
+    <div class="tab-panel">
+      <div class="viewport"><img class="pano-img" src="{{替代方案全景图路径}}"></div>
+      <div class="viewport"><img class="pano-img" src="{{替代方案放大图路径}}"></div></div>
+  </section>
+  <section><h2>关键价位</h2><table>
+    <tr><th>类型</th><th>价位</th><th>说明</th></tr>
+    <tr><td>上方突破观察</td><td>{{上方突破观察价位}}</td><td>{{上方突破观察说明}}</td></tr>
+    <tr><td>下方防守</td><td>{{下方防守价位}}</td><td>{{下方防守说明}}</td></tr>
+    <tr><td>纪律止损</td><td>{{纪律止损价位}}</td><td>{{纪律止损说明}}</td></tr></table></section>
+  <section class="summary"><h2>简洁总结</h2>
+    <p>{{总结核心判断}}</p><p>{{总结当前关键形态}}</p><p>{{总结备选方案}}</p>
+    <p>{{总结概率与仓位}}</p><p>{{总结关键价位}}</p><p>{{总结核心方法论启示}}</p></section>
+  <footer><p>{{数据来源}} ｜ {{生成时间}}</p></footer>
+</div></body>
+</html>
+```

@@ -46,14 +46,14 @@
 
 ## 4. 触发条件判定表
 
-### 4.1 硬性触发（必须退回 02 重新数浪）
+### 4.1 硬性触发（必须退回第 2 步 重新数浪）
 
 - H1 三铁律违反（references/workflow.md 第 5 步第 3 节（触发条件判定）；references/rules.md R5、R6、R7）；
 - H2 级别嵌套崩溃（references/workflow.md 第 5 步第 3 节（触发条件判定）；references/rules.md R4）；
 - H3 关键通道决定性突破（references/workflow.md 第 5 步第 3 节（触发条件判定）；references/guidelines.md G3、G4）；
 - H4 延长后第五浪失败且无法归入其他形态（references/workflow.md 第 5 步第 3 节（触发条件判定）；references/rules.md R17、R29）。
 
-### 4.2 软性触发（建议重估，不强制退回 02）
+### 4.2 软性触发（建议重估，不强制退回第 2 步）
 
 - S1 时间/比例严重偏离（references/workflow.md 第 5 步第 3 节（触发条件判定）；references/guidelines.md G5–G8）；
 - S2 调整浪细分持续不符（references/workflow.md 第 5 步第 3 节（触发条件判定））；
@@ -69,7 +69,7 @@
 
 | 条件类型 | 具体表现 | 是否触发 | 处理动作 |
 | --- | --- | --- | --- |
-| H1–H4 | （当日价格行为） | 是/否 | （退回 02 / 继续观察） |
+| H1–H4 | （当日价格行为） | 是/否 | （退回第 2 步 / 继续观察） |
 | S1–S3 | （当日价格行为） | 是/否 | （建议重估 / 继续观察） |
 
 ## 5. 方案状态与概率重排
@@ -77,7 +77,7 @@
 ### 5.1 方案状态
 
 - 主方案失效 → 替代升级（references/workflow.md 第 5 步第 2 节（失效价位监控））；
-- 主方案与所有替代均失效 → 退回 02（references/workflow.md 第 5 步第 2 节（失效价位监控）；references/rules.md R19）；
+- 主方案与所有替代均失效 → 退回第 2 步（references/workflow.md 第 5 步第 2 节（失效价位监控）；references/rules.md R19）；
 - 仅结构失效触及 → 降级"观察中"，并行跟踪替代（references/workflow.md 第 5 步第 2 节（失效价位监控））。
 - **方案状态有变化时**：重新绘制对应方案的 K 线图（脚本见技能 `scripts/ew_chart.py`），并在复盘说明附**新图 + 对比说明**（与上一复盘日图表对比：哪些浪段修正、哪些失效价位触及/新增）。
 
